@@ -13,8 +13,12 @@
       
         <ul class="nav">
           <% if user_signed_in? %>
-            <li><%=link_to current_user.name, current_user %></li>  
-            <li><%= link_to "+Tat", new_tattoo_path %></li>  
+             <li><%= link_to "Search" %></li>
+            <li><%= link_to "+Tat", new_tattoo_path %></li>
+            <li><%= link_to "Most Recent" %></li>
+            <li><%= link_to "Most Popular" %></li>
+             <li><%= link_to "About" %></li>
+            <li><%=link_to current_user.name, current_user %></li>    
             <li><%= link_to 'Edit account', edit_user_registration_path %></li>
             <% if current_user.has_role? :admin %>
               <li><%= link_to 'Admin', users_path %></li>

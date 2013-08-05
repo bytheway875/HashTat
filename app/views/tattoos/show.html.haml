@@ -1,4 +1,3 @@
-%p#notice= notice
 #tattoo_info
   #photo_div
     - if @tattoo.picture.present?
@@ -21,7 +20,7 @@
     %p.tattoo_body_location= @tattoo.body_location
 
     %p.title Artist
-    %p.tattoo_artist= @tattoo.artist
+    %p.tattoo_artist_name= @tattoo.artist_name
 
     %p.title studio
     %p.tattoo_studio= @tattoo.studio

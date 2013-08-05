@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   # Establish relationships between models
   has_many :tattoos
   has_many :comments
-
+  
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider,:uid)).first_or_create do |user|

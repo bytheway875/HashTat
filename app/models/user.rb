@@ -6,15 +6,45 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :location
-  
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :location, :is_artist
   # Establish relationships between models
   has_many :tattoos
   has_many :comments
+  #has_one :portfolio
 
+  scope :artists, -> { where(is_artist: true) }
+
+  # # Favorite artist setter
+  # def favorite_artist=(artist_name)
+  #   if favorite_artist_in_system = User.find_by_name(artist_name)
+  #     self.favorite_artist_user = favorite_artist_in_system
+  #   else
+  #     self.favorite_artist_name = artist_name
+  #   end
+  # end
+
+  # # Favorite artist getter
+  # def favorite_artist
+  #   if favorite_artist_name.blank?
+  #     self.favorite_artist_user # <- favorite_artist_user_id column in database
+  #   else
+  #     favorite_artist_name # <- new column in the database
+  #   end
+  # end
+
+  # first_name last_name searchable_name  <- ActiveRecord observers
+
+  # def update_searchable_name
+  # end
+
+
+
+
+  def self.search_artists(artist_name)
+    artists.where("searchable_name LIKE ?", "%#{artist_name.gsub(' ', '%')}%")
+  end
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider,:uid)).first_or_create do |user|

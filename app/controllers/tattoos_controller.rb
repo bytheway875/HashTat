@@ -89,7 +89,7 @@ class TattoosController < ApplicationController
   end
 
   def vote_up
-      @tattoo = Tattoo.find(params[:id])
+    @tattoo = Tattoo.find(params[:id])
     current_user.vote_for(@tattoo)
     respond_to do |format|
       format.js {render 'vote'}
@@ -106,7 +106,7 @@ class TattoosController < ApplicationController
     end
   end
 
-   def search
+  def search
     # copying code here so this means this code should be at higher level like on index action
     params[:per_page] ||= 25
     params[:page]     ||= 1

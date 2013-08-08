@@ -12,7 +12,6 @@ html{
   width:100%;
   min-height:100%;
   height: auto !important;
-  margin: 0 auto -4em;
   min-width:1150px;
   margin-top: 45px;
 }
@@ -47,7 +46,7 @@ html{
 }
 
 .row {
-  margin-top:-3.8em;
+  margin-top:-3.75em;
   height: 0;
 }
 
@@ -103,7 +102,7 @@ html{
 }
 
 .active {
-  opacity:0.65;
+  background-color: rgba(0, 0, 0, 0.65)
 }
 
 .sign_btn {

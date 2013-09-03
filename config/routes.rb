@@ -9,7 +9,7 @@ Myapp::Application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users
   match 'preview' => 'tattoos#preview'
-  get 'search' => 'search#search'
+  get 'search' => 'search#search', :as => :search
   match 'about' => 'home#about'
   match 'quickpreview' => 'home#quickpreview'
   resources :tattoos do
